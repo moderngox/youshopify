@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <title>You Shop(ify): Admin Tool</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Bootstrap -->
+  <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet" media="screen">
+  <link href="{{ asset('css/specific.css') }}" rel="stylesheet" media="screen">
+  <!-- HTML5 Shim and Respond.js add IE8 support of HTML5 elements and media queries -->
+  {% include 'BraincraftedBootstrapBundle::ie8-support.html.twig' %}
+  {% stylesheets 'bundles/shopifyadmin/css/*' filter='cssrewrite' %}
+  <link rel="stylesheet" href="{{ asset_url }}" />
+  {% endstylesheets %}
+</head>
+
+
+<body>
+  <div class="navbar-wrapper">
+    <div class="container">
+      <div class="navbar navbar-inverse navbar-static-top">
+
+        <div class="navbar-header">
+         <a class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+           <span class="icon-bar"></span>
+           <span class="icon-bar"></span>
+           <span class="icon-bar"></span>
+         </a>
+         <a class="navbar-brand" href="{{ path('index') }}">You Shop(ify)</a>
+       </div>
+       <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+          {{ knp_menu_render('ShopifyAdminBundle:Builder:mainMenu',{ 'style': 'pills' }) }}
+        </ul> 
+      </div>
+
+    </div>
+  </div><!-- /container -->
+</div><!-- /navbar wrapper -->
+
+
+<!-- Carousel
+  ================================================== -->
+  <div id="myCarousel" class="carousel slide">
+    <div class="carousel-inner">
+      <div class="item active">
+        <img src="{{asset('bundles/shopifyadmin/images/black.png')}}" class="img-responsive">
+        <div class="container">
+          <div class="carousel-caption">
+            <h1>You Shop(ify)</h1>
+            <br>
+            <h2>The easy admin tool for shopify vendors</h2>
+            <pthis is="" an="" example="" layout="" with="" carousel="" that="" uses="" the="" bootstrap="" 3="" styles.<="" small=""><p></p>
+              <p><a class="btn btn-lg btn-primary" href="#getstarted">Get Started</a>
+              </p></pthis></div>
+            </div>
+          </div>
+          <div class="item">
+      <!--img src="http://lorempixel.com/1500/600/abstract/1" class="img-responsive">
+      <div class="container">
+        <div class="carousel-caption">
+          <h1>Changes to the Grid</h1>
+          <p>Bootstrap 3 still features a 12-column grid, but many of the CSS class names have completely changed.</p>
+          <p><a class="btn btn-large btn-primary" href="#">Learn more</a></p>
+        </div>
+      </div>
+    </div>
+    <div class="item">
+      <img src="http://placehold.it/1500X500" class="img-responsive">
+      <div class="container">
+        <div class="carousel-caption">
+          <h1>Percentage-based sizing</h1>
+          <p>With "mobile-first" there is now only one percentage-based grid.</p>
+          <p><a class="btn btn-large btn-primary" href="#">Browse gallery</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Controls -->
+  <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+    <span class="icon-prev"></span>
+  </a>
+  <a class="right carousel-control" href="#myCarousel" data-slide="next">
+    <span class="icon-next"></span>
+  </a>  
+</div>
+<!-- /.carousel -->
+
+
+<!-- Marketing messaging and featurettes
+  ================================================== -->
+  <!-- Wrap the rest of the page in another container to center all the content. -->
+
+  <div class="container marketing">
+
+    <div class="bs-docs-featurette">
+      <div class="text-center">
+        <h2 class="bs-docs-featurette-title">Why use You Shop(ify)?</h2>
+      </div>
+      <br><br>
+      <!-- Three columns of text below the carousel -->
+      <div class="row">
+        <div class="col-md-4 text-center">
+          <h2>Shopify Boundaries</h2>
+          <p>"I made an online frippery based on Shopify which had to allow my vendors to administrate freely their products (CRUD) but infortunately, while my development, I was surprised to notice Shopify doesn't offer this functionnality." </p><!--h2><span class="text-muted">You Shop(ify) Admin is a web-tool entirely customizable which allows your Shopify's customers to manage their collections.</span></h2-->
+        </div>
+        <div class="col-md-4 text-center">
+          <!--img class="img-circle" src="http://placehold.it/140x140"-->
+          <h2 id="workaround">A messy "workaround"</h2>
+          <p>"To solve this problem, I have made a kind of solution which consisted in inserting Jotform to my shop that let my vendors the capability to submit their items, yet in an indirect way.Then I had to create them manually via my classic Shopify administration. A very messy and frustating workaround."</p><!--h2><span class="text-muted">With You Shop(ify) Admin, your users will manage</span></h2-->
+        </div>
+        <div class="col-md-4 text-center">
+          <h2>A sexy answer</h2>
+          <p>You Shop(ify) Admin is a web-tool entirely customizable which allows you and your Shopify's customers to manage their collections in an easy and quick way. </p><!--h2><span class="text-muted">You Shop(ify) Admin is a web-tool entirely customizable which allows your Shopify's customers to manage their collections.</span></h2-->
+        </div>
+      </div><!--end row -->  
+    </div><!-- /featurette-->
+   <!--end row -->
+    </div><!-- /featurette-->
+
+
+</div></div></div>
+<hr class="featurette-divider">
+
+<div class="bs-docs-featurette">
+  <div class="container">
+    <div class="text-center">
+      <h2 class="bs-docs-featurette-title" id="getstarted">Get started</h2>
+      <p class="lead"></p>
+    </div><br><br>
+    <div class="bs-docs-featurette">
+      <div class="col-md-4 text-center">
+        <h2>1. Get the API on Github</h2>
+        <p>Go to <a href="#" target="_blank">Github</a> and get the API which is entirely customizable for your own specific use. The API works through a combination of the PHP libraries Jotform and Shopify APIs.</p>
+        <p><br><a class="btn btn-default" href="#">Go to Github »</a></p>
+      </div>
+      <div class="col-md-4 text-center">
+        <!--img class="img-circle" src="http://placehold.it/140x140"-->
+        <h2>2. Jotform-Shopify</h2>
+        <p>To end up with <a href="#workaround"> messy workarounds</a> as testified,the Jotform-Shopify communication offers to the administrator the quick and easy way to transfer the remained items from your Jotform Database to your shop one before implementing the step 3.</p><p><a class="btn btn-default" href="{{ path('jotform_submissions') }}">Test it »</a></p>
+      </div>
+      <div class="col-md-4 text-center">
+        <h2>3. Offer a CRUD service</h2>
+        <p>While the Jotform-Shopify workaround could appear as a deprecated and useless service. You can integrate directly a service which allows your users to CRUD their collections items.</p><p><br><a class="btn btn-default" href="{{path('add_demo')}}">Test it »</a></p>
+      </div>
+    </div> <!--end row -->
+  </div>
+</div>
+<hr class="featurette-divider"> 
+<div class="bs-docs-featurette">
+<div class="text-center">
+      <h2 class="bs-docs-featurette-title" id="getstarted">Quick Demo Steps</h2><!--span class="text-muted">Lightweight.</span-->
+      <p class="lead"></p>
+    </div><br><br>
+  <div class="row">
+    <div class="col-md-4 text-center">
+      <img class="img-circle" src="{{asset('bundles/shopifyadmin/images/step1.png')}}">
+      <br><br><br><br>
+      <h2>1. Fill it</h2>
+      <p>Fill the product form with your item details</p>
+    </div>
+    <div class="col-md-4 text-center">
+      <img class="img-circle" src="{{asset('bundles/shopifyadmin/images/step2.png')}}">
+      <br><br><br><br><br><br><br>
+      <h2>2. Save it</h2>
+      <p>After filling the form, save it and make sure to get the success message.</p>
+    </div>
+    <div class="col-md-4 text-center">
+      <img class="img-circle" width="140" src="{{asset('bundles/shopifyadmin/images/item.png')}}">
+      <h2>3. Check it</h2>
+      <p>Check the result on the demo shop.</p>
+    </div>
+  </div><!-- /.row -->  
+</div>
+</div></div>
+<hr class="featurette-divider">  
+
+<!-- /END THE FEATURETTES -->
+<!-- jQuery (necessary for Bootstraps JavaScript plugins) -->
+<script src="{{ asset('js/jquery.js') }}"></script>
+<!-- Include all JavaScripts, compiled by Assetic -->
+<script src="{{ asset('js/bootstrap.js') }}"></script>
+
+</body>
+
+<!-- FOOTER -->
+<footer>
+  <p class="pull-right"><a href="#">Back to top</a></p>
+  <div class="container">
+    <div class="text-center">
+      <p>Designed and built under Symfony2 and the help of Bootply by <a href="https://twitter.com/goxyskinny" target="_blank">@moderngox</a>.<br>
+        Code licensed under MIT, documentation under CC BY 3.0.</a></p>
+      </div> 
+    </div>    
+  </footer>
+
+

@@ -1,0 +1,40 @@
+{% extends "ShopifyAdminBundle::layout.html.twig" %}
+
+{% block title "Product form" %}
+
+{% block content %}
+  <div class="text-center">
+    <h1>Add a product to the Demo shop</h1>
+    <p class="lead">Use this form as a way to quickly see the power of Shop(ify)</p>
+  </div>
+<br><br><br>	
+<div class="container">
+    
+    <form  method="POST" id="product_form">
+         {{ bootstrap_set_style('horizontal') }}
+        {{ form_errors(form) }}
+        <div class="text-center">
+        {{ form_row(form.title, { 'label_col': 2, 'widget_col': 4}) }}
+        <br><br>
+        {{ form_row(form.type, { 'label_col': 2, 'widget_col': 2}) }}
+    	<br>
+        {{ form_row(form.description, { 'label_col': 2, 'widget_col': 8}) }}
+        <br><br><br>
+        {{ form_row(form.price, { 'label_col': 2, 'widget_col': 2   }) }}
+        <br>
+        {{ form_row(form.image, { 'label_col': 2, 'widget_col': 8   }) }}
+        <br>
+        {{ form_row(form.vendor, { 'label_col': 2, 'widget_col': 4   }) }}
+        <br><br>
+        </div> 
+        {{ form_rest(form) }}
+
+        <div class="flash-notice">
+        {{ flashMessage }}
+   
+    </div>
+    </form>
+</div>
+
+    	<br><br><br><br>   
+{% endblock %}

@@ -1,0 +1,7 @@
+parameters:
+
+
+
+services:
+    youshopify.service:
+        class: Shopify\AdminBundle\Service\YouShopifyService

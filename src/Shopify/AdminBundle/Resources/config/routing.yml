@@ -1,0 +1,24 @@
+
+index:   
+    path: / 
+    defaults:  { _controller: ShopifyAdminBundle:ShopifyAdmin:index }
+
+jotform_submissions:
+    path: /submissions/{page}
+    defaults:  { _controller: ShopifyAdminBundle:ShopifyAdmin:listSubmissions , page: 1 }
+    requirements:
+        page:  \d+
+
+about:
+   path: /about
+   defaults: { _controller: ShopifyAdminBundle:ShopifyAdmin:about }
+
+add_demo:
+   path: /add-item-demo
+   defaults: { _controller: ShopifyAdminBundle:ShopifyAdmin:add }
+
+
+submission_send:	
+    path:   /submissions/item/{id} 
+    defaults:  { _controller: ShopifyAdminBundle:ShopifyAdmin:send }
+

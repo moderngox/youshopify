@@ -1,0 +1,27 @@
+shopify_admin_homepage:
+    pattern:  /admin
+    defaults: { _controller: ShopifyAdminBundle:Default:index }
+
+_admin:
+    resource: "@ShopifyAdminBundle/Controller/DefaultController.php"
+    type:     annotation
+    prefix:   /admin
+
+_admin_products:
+    path: /products/{page}
+    prefix:   /admin
+    defaults:  { _controller: ShopifyAdminBundle:Default:products , page: 1 }
+    requirements:
+        page:  \d+
+
+product_edit:
+    path:   /product/{id}
+    prefix:   /admin
+    defaults:  { _controller: ShopifyAdminBundle:Default:edit }
+    requirements:
+        id:  \d+
+
+product_create:
+    path:   /product/new
+    prefix:   /admin
+    defaults:  { _controller: ShopifyAdminBundle:Default:new }

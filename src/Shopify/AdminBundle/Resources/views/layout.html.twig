@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>You Shop(ify) Admin</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet" media="screen">
+    {% stylesheets 'bundles/shopifyadmin/css/*' filter='cssrewrite' %}
+      <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
+    <!-- HTML5 Shim and Respond.js add IE8 support of HTML5 elements and media queries -->
+    {% include 'BraincraftedBootstrapBundle::ie8-support.html.twig' %}
+
+</head>
+
+
+<body>
+
+
+
+<div class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="{{ path('index') }}">You Shop(ify) Admin</a>
+    </div>
+    <div class="collapse navbar-collapse">
+     {{ knp_menu_render('ShopifyAdminBundle:Builder:mainMenu',{ 'style': 'pills' }) }}
+    </div><!--/.nav-collapse -->
+  </div>
+</div>
+<br><br><br> 
+{% for  flashMessage in app.session.flashbag.get('success') %}
+    <div class="alert-success">
+      {% autoescape %} 
+         <div class="flash-notice"> 
+          {{ flashMessage|raw }}
+         </div>
+         
+       {% endautoescape %}  
+    </div>
+{% endfor %}
+{% block content %}
+
+{% endblock %}
+    <!-- jQuery (necessary for Bootstraps JavaScript plugins) -->
+    <script src="{{ asset('js/jquery.js') }}"></script>
+    <!-- Include all JavaScripts, compiled by Assetic -->
+    <script src="{{ asset('js/bootstrap.js') }}"></script>
+</body>
+
+ <footer>
+    <div class="container">
+      <div class="text-center">
+        <p>Designed and built under Symfony2 and the help of Bootply by <a href="https://twitter.com/goxyskinny" target="_blank">@moderngox</a>.<br>
+        Code licensed under MIT, documentation under CC BY 3.0.</a></p>
+       </div> 
+    </div>    
+  </footer> 
+
+</html>
+

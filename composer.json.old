@@ -2,24 +2,10 @@
     "name": "symfony/framework-standard-edition",
     "license": "MIT",
     "type": "project",
-    "minimum-stability": "dev",
     "description": "The \"Symfony Standard Edition\" distribution",
     "autoload": {
         "psr-0": { "": "src/" }
     },
-"repositories": [
-        {
-            "type": "package",
-            "package": {
-                "name": "jquery/jquery",
-                "version": "1.10.2",
-                "dist": {
-                    "url": "http://code.jquery.com/jquery-1.10.2.js",
-                    "type": "file"
-                }
-            }
-        }
-    ],
     "require": {
         "php": ">=5.3.3",
         "symfony/symfony": "~2.4",
@@ -32,17 +18,8 @@
         "sensio/distribution-bundle": "~2.3",
         "sensio/framework-extra-bundle": "~3.0",
         "sensio/generator-bundle": "~2.3",
-        "incenteev/composer-parameter-handler": "~2.0",
-        "egeloen/ckeditor-bundle": "~2.0",
-        "sandeepshetty/shopify_api": "dev-master",
-        "jotform/jotform-api-php": "dev-master",
-        "braincrafted/bootstrap-bundle": "dev-develop",
-        "twbs/bootstrap": "3.0.*",
-        "jquery/jquery":  "1.10.*",
-        "knplabs/knp-menu-bundle":"~2.0.0-alpha1",
-        "knplabs/knp-paginator-bundle": "~2.4"
+        "incenteev/composer-parameter-handler": "~2.0"
     },
-    
     "scripts": {
         "post-install-cmd": [
             "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
@@ -50,7 +27,6 @@
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile"
-           
         ],
         "post-update-cmd": [
             "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
@@ -58,9 +34,7 @@
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile"
-           
         ]
-
     },
     "config": {
         "bin-dir": "bin"

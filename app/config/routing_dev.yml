@@ -17,5 +17,9 @@ _main:
 #_acme_demo:
  #   resource: "@AcmeDemoBundle/Resources/config/routing.yml"
 
-_gok_demo:
-    resource: "@GokMyTestBundle/Resources/config/routing.yml"
+#_gok_demo:
+#    resource: "@GokMyTestBundle/Resources/config/routing.yml"
+
+_shopify_admin:
+    resource: "@ShopifyAdminBundle/Resources/config/routing.yml"
+    prefix:   /
