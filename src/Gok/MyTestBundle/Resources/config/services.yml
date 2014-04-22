@@ -1,0 +1,7 @@
+parameters:
+#    gok_my_test.example.class: Gok\MyTestBundle\Example
+
+services:
+#    gok_my_test.example:
+#        class: %gok_my_test.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
