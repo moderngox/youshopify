@@ -85,7 +85,10 @@
         "register_globals=off",
         "session.auto_start=off"
     ],
-    "framework":"symfony2"
+    "framework":"symfony2",
+    "compile": [
+        "php app/console assetic:dump --env=prod --no-debug"
+    ]
 }
     }
 }
