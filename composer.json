@@ -70,19 +70,6 @@
         },
         "branch-alias": {
             "dev-master": "2.4-dev"
-        },
-        "heroku": {
-    "document-root": "web",
-    "index-document": "app.php",
-    "php-config": [
-        "date.timezone=Europe/Berlin",
-        "display_errors=off",
-        "short_open_tag=off",
-        "magic_quotes_gpc=off",
-        "register_globals=off",
-        "session.auto_start=off"
-    ],
-    "framework":"symfony2"
-}
+        }
     }
 }
