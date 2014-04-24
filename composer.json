@@ -18,15 +18,7 @@
         "sensio/distribution-bundle": "~2.3",
         "sensio/framework-extra-bundle": "~3.0",
         "sensio/generator-bundle": "~2.3",
-        "incenteev/composer-parameter-handler": "~2.0",
-        "egeloen/ckeditor-bundle": "~2.0",
-        "sandeepshetty/shopify_api": "dev-master",
-        "jotform/jotform-api-php": "dev-master",
-        "braincrafted/bootstrap-bundle": "dev-develop",
-        "twbs/bootstrap": "3.0.*",
-        "jquery/jquery":  "1.10.*",
-        "knplabs/knp-menu-bundle":"~2.0.0-alpha1",
-        "knplabs/knp-paginator-bundle": "~2.4"
+        "incenteev/composer-parameter-handler": "~2.0"
     },
     
     "scripts": {
@@ -59,19 +51,6 @@
         },
         "branch-alias": {
             "dev-master": "2.4-dev"
-        },
-        "heroku": {
-        "document-root": "web",
-        "index-document": "app.php",
-        "php-config": [
-            "date.timezone=Europe/Berlin",
-            "display_errors=off",
-            "short_open_tag=off",
-            "magic_quotes_gpc=off",
-            "register_globals=off",
-            "session.auto_start=off"
-        ],
-        "framework":"symfony2"
-    }
+        }
     }
 }
