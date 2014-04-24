@@ -3,8 +3,69 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "6270e662d3f9cbf29eefed57cf8ebb26",
+    "hash": "0b9e9f4935a636f2861975e1c9c99a9a",
     "packages": [
+        {
+            "name": "braincrafted/bootstrap-bundle",
+            "version": "dev-develop",
+            "target-dir": "Braincrafted/Bundle/BootstrapBundle",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/braincrafted/bootstrap-bundle.git",
+                "reference": "a03bc038690ae8815052360aed22fbc9e0b75e2f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/braincrafted/bootstrap-bundle/zipball/a03bc038690ae8815052360aed22fbc9e0b75e2f",
+                "reference": "a03bc038690ae8815052360aed22fbc9e0b75e2f",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3",
+                "symfony/console": "~2.3",
+                "symfony/finder": "~2.3",
+                "symfony/form": "~2.3",
+                "symfony/framework-bundle": "~2.3",
+                "symfony/twig-bundle": "~2.3"
+            },
+            "require-dev": {
+                "knplabs/knp-menu": "~2.0@alpha",
+                "knplabs/knp-menu-bundle": "~2.0@alpha",
+                "knplabs/knp-paginator-bundle": "dev-master",
+                "mockery/mockery": "0.8.*",
+                "phpunit/phpunit": "3.7.*",
+                "symfony/assetic-bundle": "~2.3"
+            },
+            "suggest": {
+                "knplabs/knp-menu": "Required to use KnpMenuBundle.",
+                "knplabs/knp-menu-bundle": "BraincraftedBootstrapBundle styles the menus provided by KnpMenuBundle.",
+                "knplabs/knp-paginator-bundle": "BraincraftedBootstrapBundle styles the pagination provided by KnpPaginatorBundle.",
+                "twbs/bootstrap": "Twitter Bootstrap provides the assets (images, CSS and JS)"
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-0": {
+                    "Braincrafted\\Bundle\\BootstrapBundle": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Florian Eckerstorfer",
+                    "email": "florian@eckerstorfer.co",
+                    "homepage": "http://florian.ec",
+                    "role": "Developer"
+                }
+            ],
+            "description": "BraincraftedBootstrapBundle integrates Bootstrap into Symfony2 by providing templates, Twig extensions, services and commands.",
+            "keywords": [
+                "bootstrap"
+            ],
+            "time": "2014-04-08 20:02:22"
+        },
         {
             "name": "doctrine/annotations",
             "version": "dev-master",
@@ -480,6 +541,47 @@
             "time": "2014-03-11 08:44:13"
         },
         {
+            "name": "jotform/jotform-api-php",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jotform/jotform-api-php.git",
+                "reference": "10ac799acec8e7d7deda607d6490f809c2931481"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jotform/jotform-api-php/zipball/10ac799acec8e7d7deda607d6490f809c2931481",
+                "reference": "10ac799acec8e7d7deda607d6490f809c2931481",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "JotForm.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0+"
+            ],
+            "homepage": "http://api.jotform.com",
+            "time": "2014-02-21 09:32:50"
+        },
+        {
+            "name": "jquery/jquery",
+            "version": "1.10.2",
+            "dist": {
+                "type": "file",
+                "url": "http://code.jquery.com/jquery-1.10.2.js",
+                "reference": null,
+                "shasum": null
+            },
+            "type": "library"
+        },
+        {
             "name": "kriswallsmith/assetic",
             "version": "dev-master",
             "source": {
@@ -662,6 +764,90 @@
                 "psr-3"
             ],
             "time": "2014-01-18 15:33:09"
+        },
+        {
+            "name": "sandeepshetty/shopify_api",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sandeepshetty/shopify_api.git",
+                "reference": "277472f4612b650155269954e49a15a4fdf2e341"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/sandeepshetty/shopify_api/zipball/277472f4612b650155269954e49a15a4fdf2e341",
+                "reference": "277472f4612b650155269954e49a15a4fdf2e341",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0",
+                "sandeepshetty/wcurl": "dev-master"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "../wcurl/wcurl.php",
+                    "client.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Sandeep Shetty",
+                    "email": "sandeep.shetty@gmail.com",
+                    "homepage": "http://sandeep.shetty.in",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Simple Shopify API client in PHP",
+            "homepage": "https://github.com/sandeepshetty/shopify_api",
+            "keywords": [
+                "api",
+                "shopify"
+            ],
+            "time": "2013-04-07 01:09:06"
+        },
+        {
+            "name": "sandeepshetty/wcurl",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sandeepshetty/wcurl.git",
+                "reference": "69e532773ca9306418101ca6c8edddd6c70d5427"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/sandeepshetty/wcurl/zipball/69e532773ca9306418101ca6c8edddd6c70d5427",
+                "reference": "69e532773ca9306418101ca6c8edddd6c70d5427",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.0.0"
+            },
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Sandeep Shetty",
+                    "email": "sandeep.shetty@gmail.com",
+                    "homepage": "http://sandeep.shetty.in",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A convenience wrapper around PHP's cURL library",
+            "homepage": "https://github.com/sandeepshetty/wcurl",
+            "keywords": [
+                "api",
+                "curl",
+                "http"
+            ],
+            "time": "2013-04-07 01:00:07"
         },
         {
             "name": "sensio/distribution-bundle",
@@ -1220,6 +1406,48 @@
             "time": "2014-04-23 15:17:21"
         },
         {
+            "name": "twbs/bootstrap",
+            "version": "v3.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/twbs/bootstrap.git",
+                "reference": "6d03173a1aad98e75f7d33e65b411c519176c59a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/twbs/bootstrap/zipball/6d03173a1aad98e75f7d33e65b411c519176c59a",
+                "reference": "6d03173a1aad98e75f7d33e65b411c519176c59a",
+                "shasum": ""
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.0.x-dev"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Jacob Thornton",
+                    "email": "jacobthornton@gmail.com"
+                },
+                {
+                    "name": "Mark Otto",
+                    "email": "markdotto@gmail.com"
+                }
+            ],
+            "description": "Sleek, intuitive, and powerful mobile first front-end framework for faster and easier web development.",
+            "homepage": "http://getbootstrap.com",
+            "keywords": [
+                "bootstrap",
+                "css"
+            ],
+            "time": "2013-12-05 16:09:10"
+        },
+        {
             "name": "twig/extensions",
             "version": "dev-master",
             "source": {
@@ -1333,9 +1561,11 @@
 
     ],
     "minimum-stability": "dev",
-    "stability-flags": [
-
-    ],
+    "stability-flags": {
+        "sandeepshetty/shopify_api": 20,
+        "jotform/jotform-api-php": 20,
+        "braincrafted/bootstrap-bundle": 20
+    },
     "platform": {
         "php": ">=5.3.3"
     },
