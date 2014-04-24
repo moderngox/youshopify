@@ -2,7 +2,7 @@
 
 namespace Shopify\AdminBundle\Service;
 
-class WcurlService{
+class WcurlService	{
 	
 
 	function wcurl($method, $url, $query='', $payload='', $request_headers=array(), &$response_headers=array(), $curl_opts=array())
