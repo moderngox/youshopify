@@ -7,6 +7,19 @@
     "autoload": {
         "psr-0": { "": "src/" }
     },
+"repositories": [
+        {
+            "type": "package",
+            "package": {
+                "name": "jquery/jquery",
+                "version": "1.10.2",
+                "dist": {
+                    "url": "http://code.jquery.com/jquery-1.10.2.js",
+                    "type": "file"
+                }
+            }
+        }
+    ],
     "require": {
         "php": ">=5.3.3",
         "symfony/symfony": "~2.4",
@@ -17,7 +30,13 @@
         "sensio/distribution-bundle": "~2.3",
         "sensio/framework-extra-bundle": "~3.0",
         "sensio/generator-bundle": "~2.3",
-        "incenteev/composer-parameter-handler": "~2.0"
+        "incenteev/composer-parameter-handler": "~2.0",
+        "jotform/jotform-api-php": "dev-master",
+        "braincrafted/bootstrap-bundle": "dev-develop",
+        "twbs/bootstrap": "3.0.*",
+        "jquery/jquery":  "1.10.*",
+        "knplabs/knp-menu-bundle":"~2.0.0-alpha1",
+        "knplabs/knp-paginator-bundle": "~2.4"
     },
     
     "scripts": {
@@ -50,6 +69,19 @@
         },
         "branch-alias": {
             "dev-master": "2.4-dev"
-        }
+        },
+        "heroku": {
+    "document-root": "web",
+    "index-document": "app.php",
+    "php-config": [
+        "date.timezone=Europe/Berlin",
+        "display_errors=off",
+        "short_open_tag=off",
+        "magic_quotes_gpc=off",
+        "register_globals=off",
+        "session.auto_start=off"
+    ],
+    "framework":"symfony2"
+}
     }
 }
