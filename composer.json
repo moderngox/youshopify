@@ -7,19 +7,6 @@
     "autoload": {
         "psr-0": { "": "src/" }
     },
-"repositories": [
-        {
-            "type": "package",
-            "package": {
-                "name": "jquery/jquery",
-                "version": "1.10.2",
-                "dist": {
-                    "url": "http://code.jquery.com/jquery-1.10.2.js",
-                    "type": "file"
-                }
-            }
-        }
-    ],
     "require": {
         "php": ">=5.3.3",
         "symfony/symfony": "~2.4",
@@ -33,8 +20,6 @@
         "incenteev/composer-parameter-handler": "~2.0",
         "sandeepshetty/shopify_api": "dev-master",
         "jotform/jotform-api-php": "dev-master",
-        "twbs/bootstrap": "3.0.*",
-        "jquery/jquery":  "1.10.*",
         "knplabs/knp-menu-bundle":"~2.0.0-alpha1",
         "knplabs/knp-paginator-bundle": "~2.4"
     },
