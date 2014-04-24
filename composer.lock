@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "e85976db1c34a82e748eff18ed7d03f8",
+    "hash": "b5028dd7170406565c61c319dd6531d9",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -480,36 +480,6 @@
             "time": "2014-03-11 08:44:13"
         },
         {
-            "name": "jotform/jotform-api-php",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/jotform/jotform-api-php.git",
-                "reference": "10ac799acec8e7d7deda607d6490f809c2931481"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/jotform/jotform-api-php/zipball/10ac799acec8e7d7deda607d6490f809c2931481",
-                "reference": "10ac799acec8e7d7deda607d6490f809c2931481",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.0"
-            },
-            "type": "library",
-            "autoload": {
-                "classmap": [
-                    "JotForm.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "GPL-3.0+"
-            ],
-            "homepage": "http://api.jotform.com",
-            "time": "2014-02-21 09:32:50"
-        },
-        {
             "name": "kriswallsmith/assetic",
             "version": "dev-master",
             "source": {
@@ -692,90 +662,6 @@
                 "psr-3"
             ],
             "time": "2014-01-18 15:33:09"
-        },
-        {
-            "name": "sandeepshetty/shopify_api",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/sandeepshetty/shopify_api.git",
-                "reference": "277472f4612b650155269954e49a15a4fdf2e341"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/sandeepshetty/shopify_api/zipball/277472f4612b650155269954e49a15a4fdf2e341",
-                "reference": "277472f4612b650155269954e49a15a4fdf2e341",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.0",
-                "sandeepshetty/wcurl": "dev-master"
-            },
-            "type": "library",
-            "autoload": {
-                "files": [
-                    "../wcurl/wcurl.php",
-                    "client.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Sandeep Shetty",
-                    "email": "sandeep.shetty@gmail.com",
-                    "homepage": "http://sandeep.shetty.in",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Simple Shopify API client in PHP",
-            "homepage": "https://github.com/sandeepshetty/shopify_api",
-            "keywords": [
-                "api",
-                "shopify"
-            ],
-            "time": "2013-04-07 01:09:06"
-        },
-        {
-            "name": "sandeepshetty/wcurl",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/sandeepshetty/wcurl.git",
-                "reference": "69e532773ca9306418101ca6c8edddd6c70d5427"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/sandeepshetty/wcurl/zipball/69e532773ca9306418101ca6c8edddd6c70d5427",
-                "reference": "69e532773ca9306418101ca6c8edddd6c70d5427",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.0.0"
-            },
-            "type": "library",
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Sandeep Shetty",
-                    "email": "sandeep.shetty@gmail.com",
-                    "homepage": "http://sandeep.shetty.in",
-                    "role": "Developer"
-                }
-            ],
-            "description": "A convenience wrapper around PHP's cURL library",
-            "homepage": "https://github.com/sandeepshetty/wcurl",
-            "keywords": [
-                "api",
-                "curl",
-                "http"
-            ],
-            "time": "2013-04-07 01:00:07"
         },
         {
             "name": "sensio/distribution-bundle",
@@ -1447,10 +1333,9 @@
 
     ],
     "minimum-stability": "dev",
-    "stability-flags": {
-        "sandeepshetty/shopify_api": 20,
-        "jotform/jotform-api-php": 20
-    },
+    "stability-flags": [
+
+    ],
     "platform": {
         "php": ">=5.3.3"
     },
