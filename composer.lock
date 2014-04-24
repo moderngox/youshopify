@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "284db57c5d6fae8bdd8d57b6911a8bf1",
+    "hash": "f10f083c91b177af6398336a6e30c19b",
     "packages": [
         {
             "name": "braincrafted/bootstrap-bundle",
@@ -487,61 +487,6 @@
                 "parser"
             ],
             "time": "2013-12-20 21:39:00"
-        },
-        {
-            "name": "egeloen/ckeditor-bundle",
-            "version": "dev-master",
-            "target-dir": "Ivory/CKEditorBundle",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/egeloen/IvoryCKEditorBundle.git",
-                "reference": "136375027d6614976b067a505f322883af6b8c8d"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/egeloen/IvoryCKEditorBundle/zipball/136375027d6614976b067a505f322883af6b8c8d",
-                "reference": "136375027d6614976b067a505f322883af6b8c8d",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.0",
-                "symfony/form": ">=2.1",
-                "symfony/framework-bundle": ">=2.1"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "3.7.*",
-                "twig/twig": "1.*"
-            },
-            "suggest": {
-                "helios-ag/fm-elfinder-bundle": "Allows to use the elfinder as CKEditor file manager",
-                "twig/twig": "Allows to use Ivory CKEditor twig templates"
-            },
-            "type": "symfony-bundle",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "2.2-dev"
-                }
-            },
-            "autoload": {
-                "psr-0": {
-                    "Ivory\\CKEditorBundle": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Eric GELOEN",
-                    "email": "geloen.eric@gmail.com"
-                }
-            ],
-            "description": "Provides a CKEditor integration for your Symfony2 Project.",
-            "keywords": [
-                "CKEditor"
-            ],
-            "time": "2014-02-06 19:55:04"
         },
         {
             "name": "incenteev/composer-parameter-handler",
