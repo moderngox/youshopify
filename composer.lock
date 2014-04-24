@@ -3,69 +3,8 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "f10f083c91b177af6398336a6e30c19b",
+    "hash": "364190f7e9b0136904d1f73e37c9399d",
     "packages": [
-        {
-            "name": "braincrafted/bootstrap-bundle",
-            "version": "dev-develop",
-            "target-dir": "Braincrafted/Bundle/BootstrapBundle",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/braincrafted/bootstrap-bundle.git",
-                "reference": "a03bc038690ae8815052360aed22fbc9e0b75e2f"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/braincrafted/bootstrap-bundle/zipball/a03bc038690ae8815052360aed22fbc9e0b75e2f",
-                "reference": "a03bc038690ae8815052360aed22fbc9e0b75e2f",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.3",
-                "symfony/console": "~2.3",
-                "symfony/finder": "~2.3",
-                "symfony/form": "~2.3",
-                "symfony/framework-bundle": "~2.3",
-                "symfony/twig-bundle": "~2.3"
-            },
-            "require-dev": {
-                "knplabs/knp-menu": "~2.0@alpha",
-                "knplabs/knp-menu-bundle": "~2.0@alpha",
-                "knplabs/knp-paginator-bundle": "dev-master",
-                "mockery/mockery": "0.8.*",
-                "phpunit/phpunit": "3.7.*",
-                "symfony/assetic-bundle": "~2.3"
-            },
-            "suggest": {
-                "knplabs/knp-menu": "Required to use KnpMenuBundle.",
-                "knplabs/knp-menu-bundle": "BraincraftedBootstrapBundle styles the menus provided by KnpMenuBundle.",
-                "knplabs/knp-paginator-bundle": "BraincraftedBootstrapBundle styles the pagination provided by KnpPaginatorBundle.",
-                "twbs/bootstrap": "Twitter Bootstrap provides the assets (images, CSS and JS)"
-            },
-            "type": "symfony-bundle",
-            "autoload": {
-                "psr-0": {
-                    "Braincrafted\\Bundle\\BootstrapBundle": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Florian Eckerstorfer",
-                    "email": "florian@eckerstorfer.co",
-                    "homepage": "http://florian.ec",
-                    "role": "Developer"
-                }
-            ],
-            "description": "BraincraftedBootstrapBundle integrates Bootstrap into Symfony2 by providing templates, Twig extensions, services and commands.",
-            "keywords": [
-                "bootstrap"
-            ],
-            "time": "2014-04-08 20:02:22"
-        },
         {
             "name": "doctrine/annotations",
             "version": "dev-master",
@@ -1801,8 +1740,7 @@
     "minimum-stability": "dev",
     "stability-flags": {
         "sandeepshetty/shopify_api": 20,
-        "jotform/jotform-api-php": 20,
-        "braincrafted/bootstrap-bundle": 20
+        "jotform/jotform-api-php": 20
     },
     "platform": {
         "php": ">=5.3.3"
