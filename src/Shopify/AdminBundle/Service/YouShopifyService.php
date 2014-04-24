@@ -3,7 +3,7 @@
 
 namespace Shopify\AdminBundle\Service;	
 use Shopify\AdminBundle\Form\ProductType;
-use sandeepshetty\shopify_api;
+use Shopify\AdminBundle\Service\ClientService;
 use Shopify\AdminBundle\Form\JotForm;
 
 /**
@@ -26,8 +26,8 @@ class YouShopifyService{
 		$api_key="38623838827b4d87858792d0e970e58f";
 		$shared_secret="41ac08f5f06a6fb4bb368ab946339415";
 		$access_token="c8b2fb6bd93481eafca5bc54cd24ae58";
-		
-		$shopify = shopify_api\client($shop_domain,$access_token,$api_key,$shared_secret);
+		$client_service = new ClientService();
+		$shopify = $client_service->client($shop_domain,$access_token,$api_key,$shared_secret);
 
 		return $shopify;
 	}
