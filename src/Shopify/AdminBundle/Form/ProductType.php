@@ -29,7 +29,7 @@ class ProductType extends AbstractType
 			'preferred_choices' => array('ebook')));
 		$builder->add('description', 'textarea',array('required'=>true));
 		$builder->add('price', 'text',array('attr' => array('input_group' => array('prepend' => '€', 'append' => '.00', 'size' => 'small'))));
-		$builder->add('image', 'text',array('required'=>true));
+		$builder->add('image', 'text',array('required'=>true,'label' => 'Image URL'));
 		$builder->add('vendor', 'text',array('required'=>true));
 		//$builder->add('Save', 'submit');
 		//$builder->add('Cancel', 'submit');
