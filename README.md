@@ -1,14 +1,14 @@
 You Shop(ify) documentation
 ===========================
 
-This API allows you to communicate with your shopify store data such as products and collections. Thus, you can create a web app which consists in a CRUD service dedicated to your shop vendors. They will able to manage their products freely without the help of the shop administrator.
+  This API allows you to communicate with your shopify store data such as products and collections. Thus, you can create a web app which consists in a CRUD service dedicated to your shop vendors. They will able to manage their products freely without the help of the shop administrator.
 
 1) Prerequisites
 ----------------------------------
 
 * Read the official shopify API documentation
 * Visit and read documentation of these github pages: <a href="https://github.com/sandeepshetty/shopify_api" target="_blank">Shopify-api</a> & <a href="https://github.com/jotform/jotform-api-phptarget="_blank">Jotform-api</a>
-* Check demos on the <a href="youshopify.herokuapp.com" target="_blank">You Shop(ify) site</a>.
+* Check demos on the <a href="http://youshopify.herokuapp.com" target="_blank">You Shop(ify) site</a>.
 * Clone the bundle
 
 2) Usage
