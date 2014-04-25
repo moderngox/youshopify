@@ -1,3 +1,0 @@
-gok_my_test_homepage:
-    pattern:  /gok
-    defaults: { _controller: GokMyTestBundle:Default:index }
