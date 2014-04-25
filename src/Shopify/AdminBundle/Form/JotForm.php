@@ -1,4 +1,4 @@
-<?
+<?php
 
 namespace Shopify\AdminBundle\Form;
 
@@ -19,7 +19,7 @@ class JotForm {
     private $baseURL = "https://api.jotform.com";
     private $apiVersion = "v1";
 
-    public function __construct($apiKey="", $outputType="json", $debugMode=false){
+    public function __construct($apiKey="", $outputType="json", $debugMode=true){
 
         $this->apiKey = $apiKey;
         $this->debugMode = $debugMode;
@@ -661,3 +661,5 @@ class JotForm {
 }
 
 class JotFormException extends \Exception{}
+
+?>

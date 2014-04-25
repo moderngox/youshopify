@@ -55,7 +55,7 @@ class YouShopifyService{
 			"image" => "Product image 1");
 		try {
 
-			$jotformAPI = new JotForm("670b9b37cd5fe8f1a00fba654376bd2c");
+			$jotformAPI = new JotForm("670b9b37cd5fe8f1a00fba654376bd2c"); //jotform API number
 
 			$forms = $jotformAPI->getForms(0, 0, null, null);
 
