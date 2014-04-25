@@ -7,8 +7,8 @@ class WcurlService	{
 
 	function wcurl($method, $url, $query='', $payload='', $request_headers=array(), &$response_headers=array(), $curl_opts=array())
 	{
-		$ch = curl_init(wcurl_request_uri($url, $query));
-		wcurl_setopts($ch, $method, $payload, $request_headers, $curl_opts);
+		$ch = curl_init($this->wcurl_request_uri($url, $query));
+		$this->wcurl_setopts($ch, $method, $payload, $request_headers, $curl_opts);
 		$response = curl_exec($ch);
 		$curl_info = curl_getinfo($ch);
 		$errno = curl_errno($ch);
@@ -21,7 +21,7 @@ class WcurlService	{
 		$msg_header = substr($response, 0, $header_size);
 		$msg_body = substr($response, $header_size);
 
-		$response_headers = wcurl_response_headers($msg_header);
+		$response_headers = $this->wcurl_response_headers($msg_header);
 
 		return $msg_body;
 	}

@@ -49,12 +49,26 @@ class ClientService{
 
 		return function ($method, $path, $params=array(), &$response_headers=array()) use ($baseurl, $shops_token)
 		{
-			function _api($method, $url, $query='', $payload='', $request_headers=array(), &$response_headers=array())
+		
+			$url = $baseurl.ltrim($path, '/');
+			$query = in_array($method, array('GET','DELETE')) ? $params : array();
+			$payload = in_array($method, array('POST','PUT')) ? stripslashes(json_encode($params)) : array();
+			
+			$request_headers = array();
+			array_push($request_headers, "X-Shopify-Access-Token: $shops_token");
+			if (in_array($method, array('POST','PUT'))) array_push($request_headers, "Content-Type: application/json; charset=utf-8");
+			
+			return $this->_api($method, $url, $query, $payload, $request_headers, $response_headers);
+		};
+	}
+
+		
+	function _api($method, $url, $query='', $payload='', $request_headers=array(), &$response_headers=array())
 		{
 			try
 			{
 				$wcurl_service = new WcurlService();
-				$response = $service->wcurl($method, $url, $query, $payload, $request_headers, $response_headers);
+				$response = $wcurl_service->wcurl($method, $url, $query, $payload, $request_headers, $response_headers);
 
 			}
 			catch(Exception $e)
@@ -69,20 +83,6 @@ class ClientService{
 
 			return (is_array($response) and !empty($response)) ? array_shift($response) : $response;
 		}
-			$url = $baseurl.ltrim($path, '/');
-			$query = in_array($method, array('GET','DELETE')) ? $params : array();
-			$payload = in_array($method, array('POST','PUT')) ? stripslashes(json_encode($params)) : array();
-			
-			$request_headers = array();
-			array_push($request_headers, "X-Shopify-Access-Token: $shops_token");
-			if (in_array($method, array('POST','PUT'))) array_push($request_headers, "Content-Type: application/json; charset=utf-8");
-			
-			return _api($method, $url, $query, $payload, $request_headers, $response_headers);
-		};
-	}
-
-		
-
 
 	function calls_made($response_headers)
 	{

@@ -4,3 +4,4 @@
 shopify_admin:
     resource: "@ShopifyAdminBundle/Resources/config/routing.yml"
     prefix:   /
+    
