@@ -1,5 +1,5 @@
-Symfony Standard Edition
-========================
+You Shop(ify) documentation
+===========================
 
 Welcome to You Shop(ify) API. This API allows you to communicate with your shopify store data such as products and collections. Thus, you can create a web app which consists in a CRUD service dedicated to your shop vendors. They will able to manage their products freely without the help of the shop administrator.
 
