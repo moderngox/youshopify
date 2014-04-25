@@ -1,170 +1,283 @@
 Symfony Standard Edition
 ========================
 
-Welcome to the Symfony Standard Edition - a fully-functional Symfony2
-application that you can use as the skeleton for your new applications.
+Welcome to You Shop(ify) API. This API allows you to communicate with your shopify store data such as products and collections. Thus, you can create a web app which consists in a CRUD service dedicated to your shop vendors. They will able to manage their products freely without the help of the shop administrator.
 
-This document contains information on how to download, install, and start
-using Symfony. For a more detailed explanation, see the [Installation][1]
-chapter of the Symfony Documentation.
-
-1) Installing the Standard Edition
+1) Prerequisites
 ----------------------------------
 
-When it comes to installing the Symfony Standard Edition, you have the
-following options.
+* Read the official shopify API documentation
+* Visit and read documentation of these github pages: <a href="https://github.com/sandeepshetty/shopify_api" target="_blank">Shopify-api</a> & <a href="https://github.com/jotform/jotform-api-phptarget="_blank">Jotform-api</a>
+* Check demos on the <a href="youshopify.herokuapp.com" target="_blank">You Shop(ify) site</a>.
+* Clone the bundle
 
-### Use Composer (*recommended*)
+2) Usage
+--------------------------------------
+The bundle gathers the source code of the Shop(ify) website.
+You will be interested in the Service package and particularly the ```YouShopifyService.php```:
+```
+class YouShopifyService{
 
-As Symfony uses [Composer][2] to manage its dependencies, the recommended way
-to create a new project is to use it.
+  /**
+  * return the Shopify properties in order to connect the store
+  *
+  */
+  function initShopify(){
+    /***** SHOPIFY STORE SETTINGS *******/
+    $shop_domain ="frip-mint.myshopify.com";
+    $api_key="38623838827b4d87858792d0e970e58f";
+    $shared_secret="41ac08f5f06a6fb4bb368ab946339415";
+    $access_token="c8b2fb6bd93481eafca5bc54cd24ae58";
+    $client_service = new ClientService();
+    $shopify = $client_service->client($shop_domain,$access_token,$api_key,$shared_secret);
+    
+    
+    return $shopify;
+  }
 
-If you don't have Composer yet, download it following the instructions on
-http://getcomposer.org/ or just run the following command:
+  /**
+  *
+  * retrive the Jotform submissions list
+  * We can use this method if you integrated jotforms in your shop and your 
+  * independent create-form is not up to work yet(i.e Maintenance mode)
+  *
+  * $chosen_form_number: the number of the chosen form
+  *
+  */
+  function getJotFormList($chosen_form_number){
 
-    curl -s http://getcomposer.org/installer | php
+    define("TITLE", "Name of the product");
+    define("TYPE", "type");
+    define ("DESCRIPTION", "Product story");
+    define ("IMAGE", "Product image 1");
+    $keys= array("title"=>"Name of the product",
+      "type"=>"type",
+      "description" => "Product story",
+      "image" => "Product image 1");
+    try {
 
-Then, use the `create-project` command to generate a new Symfony application:
+      $jotformAPI = new JotForm("670b9b37cd5fe8f1a00fba654376bd2c"); //jotform API number
 
-    php composer.phar create-project symfony/framework-standard-edition path/to/install
+      $forms = $jotformAPI->getForms(0, 0, null, null);
 
-Composer will install Symfony and all its dependencies under the
-`path/to/install` directory.
+      $chosenForm = $forms[$chosen_form_number];
 
-### Download an Archive File
+      $latestFormID = $chosenForm["id"];
 
-To quickly test Symfony, you can also download an [archive][3] of the Standard
-Edition and unpack it somewhere under your web server root directory.
+      $submissions = $jotformAPI->getFormSubmissions($latestFormID);
 
-If you downloaded an archive "without vendors", you also need to install all
-the necessary dependencies. Download composer (see above) and run the
-following command:
 
-    php composer.phar install
+      $jotFormList = array();
+      foreach($submissions as $submission){
 
-2) Checking your System Configuration
--------------------------------------
+        $product = new ProductType($id=uniqid());
+        foreach ($submission["answers"] as $attribute){
 
-Before starting coding, make sure that your local system is properly
-configured for Symfony.
+          foreach($keys as $key=>$value){ 
+            $product->id = uniqid();
+            switch ($attribute["text"]) {
+              case 'Name of the product':
+              $product->title = $attribute["answer"];
+              break;
+              case 'type':
+              $product->type = $attribute["answer"];
+              break;
+              case 'Product story':
+              $product->description = $attribute["answer"];
+              break;
+              case 'Product image 1':
+              $product->image = $attribute["answer"][0];
+              break;
+              //TODO add VENDOR
+            }
 
-Execute the `check.php` script from the command line:
+          } 
+        }
 
-    php app/check.php
+        $jotFormList[] = $product;
 
-The script returns a status code of `0` if all mandatory requirements are met,
-`1` otherwise.
+      }
+    }
+    catch (Exception $e) {
+      var_dump($e->getMessage());
+    }
 
-Access the `config.php` script from a browser:
+    return $jotFormList;    
 
-    http://localhost/path/to/symfony/app/web/config.php
+  }
+/**
+* Simple mapping from our Bundle product format to the Shopify_API one
+* $product is a ProductType
+**/
+function map($product){
 
-If you get any warnings or recommendations, fix them before moving on.
+  $shopify_product = array
+  (
 
-3) Browsing the Demo Application
---------------------------------
+    "product"=>array( "title" =>$product->title, 
+      "product_type" => $product->type,
+      "body_html" =>  $product->description,
+      "vendor"=>$product->vendor,
+      "price"=>$product->price,
+      "images"=>array( array("src"=>$product->image)),
+      "published"=> true)
+    );
 
-Congratulations! You're now ready to use Symfony.
+  return $shopify_product;
 
-From the `config.php` page, click the "Bypass configuration and go to the
-Welcome page" link to load up your first Symfony page.
+}
 
-You can also use a web-based configurator by clicking on the "Configure your
-Symfony Application online" link of the `config.php` page.
+/**
+* Simple mapping between a $form(Form->getData) and a bundle $product (ProductType)
+* 
+**/
+function mapFormToProduct($form,$product){
 
-To see a real-live Symfony page in action, access the following page:
+  
+  $product->title=$form['title']->getData();
+  $product->type=$form['type']->getData();
+  $product->description=$form['description']->getData();
+  $product->description=$form['description']->getData();
+  $product->price=$form['price']->getData();
+  $product->image=$form['image']->getData();
+  $product->vendor=$form['vendor']->getData();
+}
 
-    web/app_dev.php/demo/hello/Fabien
+/**
+* Create a product to your store
+* 
+**/
+function create_update_Product($product,$collection_id){
 
-4) Getting started with Symfony
--------------------------------
+  $shopify = $this->initShopify();
 
-This distribution is meant to be the starting point for your Symfony
-applications, but it also contains some sample code that you can learn from
-and play with.
+  $product_created = $shopify('POST', "/admin/products.json",$this->map($product), $response_headers);
+  $this->addProductToCollect($shopify, $product_created['id'],$collection_id);
+  return $product_created;
+}
 
-A great way to start learning Symfony is via the [Quick Tour][4], which will
-take you through all the basic features of Symfony2.
+/**
+* retrieve your shop collections
+* 
+**/
+function getCollections(){
+  $shopify = $this->initShopify();
+  $collections = $shopify('GET', "/admin/custom_collections.json");
+  return $collections;
+}
 
-Once you're feeling good, you can move onto reading the official
-[Symfony2 book][5].
+/**
+* Add a product to a collection $collection_id with the $product_id 
+* 
+**/
+function addProductToCollect($shopify, $product_id,$collection_id){
 
-A default bundle, `AcmeDemoBundle`, shows you Symfony2 in action. After
-playing with it, you can remove it by following these steps:
+  $collect = array
+  (
 
-  * delete the `src/Acme` directory;
+    "collect"=>array(  
+      "product_id" => $product_id,
+      "collection_id" => $collection_id
+      )
+    );
 
-  * remove the routing entry referencing AcmeDemoBundle in `app/config/routing_dev.yml`;
+  $shopify('POST',"/admin/collects.json",$collect);
 
-  * remove the AcmeDemoBundle from the registered bundles in `app/AppKernel.php`;
+}
+}
+```
+A simple usage of the API is shown in the ```ShopifyAdminController.php```:
 
-  * remove the `web/bundles/acmedemo` directory;
+```
+class ShopifyAdminController extends Controller
+{
+  
 
-  * empty the `security.yml` file or tweak the security configuration to fit
-    your needs.
+  public function indexAction(Request $request)
+  {
+    return $this->render('ShopifyAdminBundle:Default:index.html.twig');
+  }
 
-What's inside?
----------------
+  public function listSubmissionsAction(Request $request)
+  {
+    $service = $this->container->get('youshopify.service');
+    $jotforms_list= $service->getJotFormList(2); // 2 represents the chosen Jotform number
+        //put the list in the session
+    $session = $request->getSession();
+    $session->set('jotform_products',$jotforms_list);
 
-The Symfony Standard Edition is configured with the following defaults:
 
-  * Twig is the only configured template engine;
+    return $this->render('ShopifyAdminBundle:Default:jotform_submissions.html.twig',array('products' => $jotforms_list));
 
-  * Doctrine ORM/DBAL is configured;
+  }
 
-  * Swiftmailer is configured;
+  public function aboutAction(){
 
-  * Annotations for everything are enabled.
+    return $this->render('ShopifyAdminBundle:Default:about.html.twig');
+  }
 
-It comes pre-configured with the following bundles:
+  public function addAction(Request $request){
 
-  * **FrameworkBundle** - The core Symfony framework bundle
+    $result_url="http://frip-mint.myshopify.com//collections/frontpage/products/"; //result url
+    $new_product=new ProductType($id=uniqid());
+    $form =$this->createForm(new ProductType());
+    $form->handleRequest($request);
+  //get YouShopify service
+    $service = $this->container->get('youshopify.service');
 
-  * [**SensioFrameworkExtraBundle**][6] - Adds several enhancements, including
-    template and routing annotation capability
+    if ($form->isValid()) {
 
-  * [**DoctrineBundle**][7] - Adds support for the Doctrine ORM
 
-  * [**TwigBundle**][8] - Adds support for the Twig templating engine
+      $service->mapFormToProduct($form,$new_product);
+    $collections= $service->getCollections(); //retrieve the collections shop
+    $create=$service->create_update_Product($new_product,$collections[0]['id']); //
+    $result_url.=$create['handle'];
+    $request->getSession()->getFlashBag()->set("success",
+      "Your product were created! Click <a href=\"$result_url\" target=\"_BLANK\">here </a> to display");
 
-  * [**SecurityBundle**][9] - Adds security by integrating Symfony's security
-    component
+  }
 
-  * [**SwiftmailerBundle**][10] - Adds support for Swiftmailer, a library for
-    sending emails
+  return $this->render('ShopifyAdminBundle:Default:product.html.twig',array('form' => $form->createView()));
+}
 
-  * [**MonologBundle**][11] - Adds support for Monolog, a logging library
 
-  * [**AsseticBundle**][12] - Adds support for Assetic, an asset processing
-    library
+public function sendAction(Request $request, $id){
 
-  * **WebProfilerBundle** (in dev/test env) - Adds profiling functionality and
-    the web debug toolbar
+  $result_url="http://frip-mint.myshopify.com//collections/frontpage/products/"; //result url
+  $session = $request->getSession();
+  //retrieve the selected product
+  $products = $session->get('jotform_products');
+  foreach($products as $product){
+    if($product->id == $id){
+      $product_to_edit = $product;
+      break;
+    }
+  }
+  //get YouShopify service
+  $service = $this->container->get('youshopify.service');
 
-  * **SensioDistributionBundle** (in dev/test env) - Adds functionality for
-    configuring and working with Symfony distributions
+  //init Form
+  $form =$this->createForm(new ProductType(),$product_to_edit);
+  $form->handleRequest($request);
 
-  * [**SensioGeneratorBundle**][13] (in dev/test env) - Adds code generation
-    capabilities
 
-  * **AcmeDemoBundle** (in dev/test env) - A demo bundle with some example
-    code
+  if ($form->isValid()) {
+    
+    
+    $collections= $service->getCollections();
+    $create=$service->create_update_Product($product_to_edit,$collections[0]['id']);
+    $result_url.=$create['handle'];
+    $request->getSession()->getFlashBag()->set("success",
+      "Your product were created! Click <a href=\"$result_url\" target=\"_BLANK\">here </a> to display");
+    
+     return $this->redirect($this->generateUrl('submission_send',array('id'=>$id)));    
+  }
 
-All libraries and bundles included in the Symfony Standard Edition are
-released under the MIT or BSD license.
+  return $this->render('ShopifyAdminBundle:Default:product.html.twig',array('form' => $form->createView()));
+}
+}
 
-Enjoy!
-
-[1]:  http://symfony.com/doc/2.4/book/installation.html
-[2]:  http://getcomposer.org/
-[3]:  http://symfony.com/download
-[4]:  http://symfony.com/doc/2.4/quick_tour/the_big_picture.html
-[5]:  http://symfony.com/doc/2.4/index.html
-[6]:  http://symfony.com/doc/2.4/bundles/SensioFrameworkExtraBundle/index.html
-[7]:  http://symfony.com/doc/2.4/book/doctrine.html
-[8]:  http://symfony.com/doc/2.4/book/templating.html
-[9]:  http://symfony.com/doc/2.4/book/security.html
-[10]: http://symfony.com/doc/2.4/cookbook/email.html
-[11]: http://symfony.com/doc/2.4/cookbook/logging/monolog.html
-[12]: http://symfony.com/doc/2.4/cookbook/assetic/asset_management.html
-[13]: http://symfony.com/doc/2.4/bundles/SensioGeneratorBundle/index.html
+```
+3) Contribution
+--------------------------------------
+You Shop(ify) is a simple work-in-a-progress API. Feel free to contribute in adding functions to the ```YouShopifyService.php``` or demo samples pages.
