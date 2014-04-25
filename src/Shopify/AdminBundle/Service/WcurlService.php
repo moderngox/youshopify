@@ -15,7 +15,7 @@ class WcurlService	{
 		$error = curl_error($ch);
 		curl_close($ch);
 
-		if ($errno) throw new Exception($error, $errno);
+		if ($errno) throw new WcurlException($error, $errno);
 
 		$header_size = $curl_info["header_size"];
 		$msg_header = substr($response, 0, $header_size);
@@ -109,4 +109,7 @@ class WcurlService	{
 			return $response_headers;
 		}
 }
+
+
+class WcurlException extends Exception { }
 ?>

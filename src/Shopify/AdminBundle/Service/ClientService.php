@@ -71,15 +71,15 @@ class ClientService{
 				$response = $wcurl_service->wcurl($method, $url, $query, $payload, $request_headers, $response_headers);
 
 			}
-			catch(Exception $e)
+			catch(WcurlException $e)
 			{
-				throw new Exception($e->getMessage(), $e->getCode());
+				throw new CurlException($e->getMessage(), $e->getCode());
 			}
 
 			$response = json_decode($response, true);
 
 			if (isset($response['errors']) or ($response_headers['http_status_code'] >= 400))
-					throw new Exception(compact('method', 'path', 'params', 'response_headers', 'response', 'shops_myshopify_domain', 'shops_token'), null);
+					throw new ApiException(compact('method', 'path', 'params', 'response_headers', 'response', 'shops_myshopify_domain', 'shops_token'), null);
 
 			return (is_array($response) and !empty($response)) ? array_shift($response) : $response;
 		}
@@ -124,4 +124,35 @@ class ClientService{
 
 	}
 }
+
+class ApiException extends \Exception
+	{	
+	/**
+	* Cosntructor
+	*
+	* @return void
+	* @author James Pudney james@phpgenie.co.uk
+	**/
+	public function __construct($message, $code = 0)
+	{
+	if ( is_array($message) )
+	{
+	$message = json_encode($message);
+	}
+
+	parent::__construct($message, $code);
+	}
+	}
+	class Exception extends \Exception
+	{
+		protected $info;
+
+		function __construct($info)
+		{
+			$this->info = $info;
+			parent::__construct($info['response_headers']['http_status_message'], $info['response_headers']['http_status_code']);
+		}
+
+		function getInfo() { $this->info; }
+	}
 ?>
