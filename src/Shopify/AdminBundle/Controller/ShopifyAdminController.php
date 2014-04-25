@@ -64,7 +64,7 @@ public function sendAction(Request $request, $id){
 
 	$result_url="http://frip-mint.myshopify.com//collections/frontpage/products/"; //result url
 	$session = $request->getSession();
-		//retrieve the selected product
+	//retrieve the selected product
 	$products = $session->get('jotform_products');
 	foreach($products as $product){
 		if($product->id == $id){

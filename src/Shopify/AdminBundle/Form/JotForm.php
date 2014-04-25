@@ -19,7 +19,7 @@ class JotForm {
     private $baseURL = "https://api.jotform.com";
     private $apiVersion = "v1";
 
-    public function __construct($apiKey="", $outputType="json", $debugMode=true){
+    public function __construct($apiKey="", $outputType="json", $debugMode=false){
 
         $this->apiKey = $apiKey;
         $this->debugMode = $debugMode;
