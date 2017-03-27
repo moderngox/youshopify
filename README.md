@@ -7,7 +7,7 @@ You Shop(ify) documentation
 ----------------------------------
 
 * Read the official shopify API documentation
-* Visit and read documentation of these github pages: <a href="https://github.com/sandeepshetty/shopify_api" target="_blank">Shopify-api</a> & <a href="https://github.com/jotform/jotform-api-phptarget="_blank">Jotform-api</a>
+* Visit and read documentation of these github pages: <a href="https://github.com/sandeepshetty/shopify_api">Shopify-api</a> & <a href="https://github.com/jotform/jotform-api-php">Jotform-api</a>
 * Check demos on the <a href="http://youshopify.herokuapp.com" target="_blank">You Shop(ify) site</a>.
 * Clone the bundle
 
